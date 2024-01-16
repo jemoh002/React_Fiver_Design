@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Gig.scss"
+import "./Gigs.scss"
 
 function Gig() {
   return (

@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Message() {
+export default function MyGigs() {
   return (
     <div>
-      Message
+      
     </div>
   )
 }
-
-export default Message
