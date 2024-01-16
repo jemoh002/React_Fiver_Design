@@ -54,23 +54,24 @@
                     cursor: pointer;
                 }
 
-                .popular{
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    span{
+                
+            }
+            .popular{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                span{
 
-                    }
-                    button{
-                        color: white;
-                        background-color: transparent;
-                        border: 1px;
-                        border: 1px solid white;
-                        padding: 5px 10px;
-                        border-radius: 20px;
-                        font-size: 14px;
-                        cursor: pointer;
-                    }
+                }
+                button{
+                    color: white;
+                    background-color: transparent;
+                    border: 1px;
+                    border: 1px solid white;
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    font-size: 14px;
+                    cursor: pointer;
                 }
             }
         }
