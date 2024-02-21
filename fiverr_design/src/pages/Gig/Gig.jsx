@@ -183,7 +183,7 @@ function Gig() {
             </div>
             <hr />
             
-2:15:53
+
             <div className="item">
               <div className="user">
                 <img className='pp' src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
@@ -224,7 +224,52 @@ function Gig() {
 
           </div>
         </div>
-        <div className="right"></div>
+        <div className="right">
+          <div className="price">
+            <h2>1 AI generated image</h2>
+            <h3>$ 59.99</h3>
+          </div>
+          <p>
+            I will create a unique high quality AI generated image based on a 
+            description that you give me
+          </p>
+          <div className="details">
+            <div className="item">
+                <img src="/img/clock.png" alt="" />
+                <span>2 days Delivery</span>
+            </div>
+
+            <div className="item">
+                <img src="/img/recycle.png" alt="" />
+                <span>3 Revisions</span>
+            </div>
+            
+          </div>
+
+          <div className="features">
+            <div className="item">
+              <img src="/img/greencheck.png" alt="" />
+              <span>Prompt writing</span>
+            </div>
+
+            <div className="item">
+              <img src="/img/greencheck.png" alt="" />
+              <span>Prompt writing</span>
+            </div>
+
+            <div className="item">
+              <img src="/img/greencheck.png" alt="" />
+              <span>Prompt writing</span>
+            </div>
+
+            <div className="item">
+              <img src="/img/greencheck.png" alt="" />
+              <span>Prompt writing</span>
+            </div>
+          </div>
+
+          <button>Continue</button>
+        </div>
       </div>
     </div>
   )
