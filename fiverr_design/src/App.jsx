@@ -12,7 +12,7 @@ import Message from './pages/message/Message'
 import Messages from './pages/messages/Messages'
 import Gigs from './pages/gigs/Gigs'
 import MyGigs from './pages/myGigs/MyGigs'
-import Gig from './pages/gigs/Gigs'
+import Gig from './pages/Gig/Gig'
 import Add from './pages/add/Add'
 
 function App() {
@@ -50,7 +50,7 @@ function App() {
           element: <MyGigs/>
         },
         {
-          path: "/gig",
+          path: "/gig/123",
           element: <Gig/>
         },
         {
