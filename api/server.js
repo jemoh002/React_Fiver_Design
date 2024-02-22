@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv"
+import userRoute from "./routes/user.route"
 
 const app = express()
 dotenv.config()
@@ -15,7 +16,10 @@ const connect = async () => {
     } catch (error) {
         console.log(error)
     }
-}
+};
+
+
+app.use("/api/users", userRoute);
 
 
 
