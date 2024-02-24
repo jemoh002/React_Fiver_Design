@@ -11,7 +11,7 @@ function Login() {
     e.preventDefault()
     try {
       const res = await axios.post(
-        "http://localhost:8800/api/auth/login",
+        "http://localhost:8800/api/auths/login",
         { username, password },
         { withCredentials: true }
       )
