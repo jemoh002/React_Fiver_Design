@@ -10,14 +10,15 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/login", {
-        username,
-        password
-      })
+      const res = await axios.post(
+        "http://localhost:8800/api/auth/login",
+        { username, password },
+        { withCredentials: true }
+      )
       console.log(res.data)
     } catch (error) {
-      setError(err);
-      console.log(err)
+      setError(error);
+      console.log(error)
     }
     
   };
