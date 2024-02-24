@@ -14,6 +14,8 @@ import Gigs from './pages/gigs/Gigs'
 import MyGigs from './pages/myGigs/MyGigs'
 import Gig from './pages/Gig/Gig'
 import Add from './pages/add/Add'
+import Login from './pages/login/Login'
+import Register from './pages/register/Register'
 
 function App() {
   const Layout = () => {
@@ -35,6 +37,14 @@ function App() {
         {
           path: "/",
           element: <Home/>
+        },
+        {
+          path: "/login",
+          element: <Login/>
+        },
+        {
+          path: "/register",
+          element: <Register/>
         },
         {
           path: "/gigs",
