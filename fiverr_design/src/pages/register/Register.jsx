@@ -1,22 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Register.scss'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
+
+import newRequest from '../../utils/newRequest'
+import upload from '../../utils/upload'
+
 
 function Register() {
+  const [file, setFile] = useState(null)
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+    img: "",
+    country: "",
+    isSeller: true, //since my slider is not working, should change it later to false when slider works
+    desc:""
+  })
+
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setUser((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    })
+  }
+
+  const handleSeller = (e) => {
+    setUser((prev) => {
+      return {...prev, isSeller: e.target.checked}
+    })
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+
+    const url = await upload(file)
+    try {
+      await newRequest.post("/auth/register", { ...user, img: url })
+      // navigate('/')
+    } catch (err) {
+      
+    }
+  }
+
+
   return (
     <div className='register'>
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className="left">
           <h1>Create a new account</h1>
           <label htmlFor="">Username</label>
-          <input type="text" name='username' placeholder='johndoe' />
+          <input type="text" name='username' placeholder='johndoe' onChange={handleChange} />
           <label htmlFor="">Email</label>
-          <input type="email" name='email' placeholder='email@email.com' />
+          <input type="email" name='email' placeholder='email@email.com' onChange={handleChange}/>
           <label htmlFor="">Password</label>
-          <input type="password" name='password' />
+          <input type="password" name='password' onChange={handleChange}/>
           <label htmlFor="">Profile Picture</label>
-          <input type="file" />
+          <input type="file" onChange={e=>setFile(e.target.files[0])}/>
           <label htmlFor="">Country</label>
-          <input type="text" name='country' placeholder='usa' />
+          <input type="text" name='country' placeholder='usa' onChange={handleChange}/>
           <button type='submit'>Register</button>
         </div>
 
@@ -25,14 +69,22 @@ function Register() {
           <div className="toggle">
             <label htmlFor="">Activate the seller account</label>
             <label htmlFor="" className='switch'>
-              <input type="checkbox" />
+              <input type="checkbox" onChange={handleSeller}/>
               <span className="slider round"></span>
             </label>
           </div>
           <label htmlFor="">Phone number</label>
-          <input type="text" name='phone' placeholder='+1 234 567 89' />
+          <input type="text" name='phone' placeholder='+1 234 567 89' onChange={handleChange}/>
           <label htmlFor="">Description</label>
-          <textarea name="desc" id="" cols="30" rows="10" placeholder='A short description of yourself'></textarea>
+          <textarea
+            name="desc"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder='A short description of yourself'
+            onChange={handleChange}
+          ></textarea>
+
         </div>
       </form>
     </div>
