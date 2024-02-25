@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import {QueryClient, QueryClientProvider, useQuery} from '@tanstack/react-query'
 
 import reactLogo from './assets/react.svg'
 import './App.scss'
@@ -18,16 +19,20 @@ import Login from './pages/login/Login'
 import Register from './pages/register/Register'
 
 function App() {
+  const queryClient = new QueryClient()
+
   const Layout = () => {
     return (
       <div className="app">
-         <Navbar />
-          <Outlet/>
-         <Footer />
+        <QueryClientProvider client={queryClient}>
+          <Navbar />
+            <Outlet/>
+          <Footer />
+        </QueryClientProvider>         
         
      </div>
     )
-  }
+  } 
 
   const router = createBrowserRouter([
     {
