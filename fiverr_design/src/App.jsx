@@ -65,7 +65,7 @@ function App() {
           element: <MyGigs/>
         },
         {
-          path: "/gig/123",
+          path: "/gig/:id",
           element: <Gig/>
         },
         {
