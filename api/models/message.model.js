@@ -1,4 +1,5 @@
 import mongoose, { mongo } from "mongoose";
+const { Schema } = mongoose;
 
 const messageSchema = new Schema({
     ConversationId: {
