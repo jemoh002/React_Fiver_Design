@@ -1,36 +1,54 @@
 import React from 'react'
 import "./Review.scss"
+import { useQuery } from '@tanstack/react-query'
+import newRequest from '../../utils/newRequest'
 
-const Review = () => {
+const Review = ({ review }) => {
+  const { isLoading, error, data } = useQuery({
+    queryKey: [review.userId],
+    queryFn: () =>
+      newRequest
+        .get(`/users/${review.userId}`)
+        .then((res) => {
+          return res.data
+        })
+    
+  });
+
   return (
     <div className="review">
 
-      <div className="user">
-        <img className='pp' src="https://images.pexels.com/photos/720327/pexels-photo-720327.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-        <div className="info">
-          <span>John Doe</span>
-          <div className="country">
-            <img src="https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png" alt="" />
-            <span>United States</span>
-          </div>
-        </div>
-      </div>
+      {
+        isLoading ? "loading"
+        : error ? "Something wrong happened!"
+            : (
+              <div className="user">
+              
+                  <img className='pp' src={data.img || "/img/noavatar.jpg"} alt="" />
+                    <div className="info">
+                
+                      <span>{data.username}</span>
+                    <div className="country">
+
+                      <span>{data.country}</span>
+                    </div>
+                  </div>
+            </div>
+            )
+      }
 
       <div className="stars">
+        {
+          Array(review.star).fill().map((item, i) => (
             <img src="/img/star.png" alt="" />
-            <img src="/img/star.png" alt="" />
-            <img src="/img/star.png" alt="" />
-            <img src="/img/star.png" alt="" />
-            <img src="/img/star.png" alt="" />
-            <span>5</span>
+          ))
+        }
+        
+        <span>{review.star}</span>
+        
       </div>
       <p>
-        I just want to say that art_with_ai was the first, and after
-        this, the only artist Ill be using on Fiverr. Communication was
-        amazing, each and every day he sent me images that I was free to
-        request changes to. They listened, understood, and delivered
-        above and beyond my expectations. I absolutely recommend this
-        gig, and know already that Ill be using it again very very soon
+        {review.desc}
       </p>
 
       <div className="helpful">
