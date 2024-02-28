@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { QueryClient, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import moment from "moment"
 
 import "./Messages.scss"
@@ -59,7 +59,7 @@ export default function Messages() {
                     
                     {data.map((c) => (
                       <tr className={
-                        (currentUser.isSeller && !c.readBySeller) || (!currentUser.isSeller && !c.readByBuyer) 
+                        ((currentUser.isSeller && !c.readBySeller) || (!currentUser.isSeller && !c.readByBuyer)) 
                         &&
                         "active"
                       } key={c.id}>
@@ -67,15 +67,15 @@ export default function Messages() {
                         
                         <td>
                           <Link to={`/message/${c.id}`} className='link'>
-                            {c.desc?.substring(0, 100)}...
+                            {c.lastMessage.substring(0, 100)}...
                           </Link>
                         </td>
-                        <td>{moment(c.lastMessage).fromNow()}</td>
+                        <td>{moment(c.updatedAt).fromNow()}</td>
                         <td>
                           {
-                            (currentUser.isSeller && !c.readBySeller)
+                            ((currentUser.isSeller && !c.readBySeller)
                             ||
-                            (!currentUser.isSeller && !c.readByBuyer)
+                            (!currentUser.isSeller && !c.readByBuyer))
                             &&
                             (
                               <button onClick={()=>handleRead(c.id)}>Mark as read</button>
