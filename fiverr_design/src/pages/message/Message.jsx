@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import "./Message.scss"
 
 
 function Message() {
+
   return (
     <div className='message'>
       <div className="container">
         <span className="breadcrumbs">
-          <Link to="/messages">MESSAGES</Link>> JOHN DOE >
+          <Link to="/messages">MESSAGES</Link>{">"} JOHN DOE {">"}
         </span>
 
         <div className="messages">
