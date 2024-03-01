@@ -17,6 +17,8 @@ import Gig from './pages/Gig/Gig'
 import Add from './pages/add/Add'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
+import Success from './pages/success/Success'
+import Pay from './pages/Pay/Pay'
 
 function App() {
   const queryClient = new QueryClient()
@@ -79,6 +81,15 @@ function App() {
         {
           path: "/message/:id",
           element: <Message/>
+        }
+        ,
+        {
+          path: "/pay/:id",
+          element: <Pay/>
+        },
+        {
+          path: "/success",
+          element: <Success/>
         }
         
       ]

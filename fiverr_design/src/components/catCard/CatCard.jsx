@@ -4,7 +4,7 @@ import "./CatCard.scss"
 
 export default function CatCard({item}) {
     return (
-        <Link to="/gig?cat=design">
+        <Link to="/gigs?cat=design">
             <div className='CatCard'>
                 <img src={item.img} alt="" />
                 <span className="desc">{ item.desc}</span>
